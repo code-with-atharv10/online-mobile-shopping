@@ -1,0 +1,1 @@
+# Add smartphone product catalog
