@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Online Mobile Shopping"
+version = "1.0.0"
+id = "artifacts/online-mobile-shop"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23532
+
+[services.development]
+run = "pnpm --filter @workspace/online-mobile-shop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/online-mobile-shop", "run", "build" ]
+publicDir = "artifacts/online-mobile-shop/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23532"
+BASE_PATH = "/"
